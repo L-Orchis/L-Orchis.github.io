@@ -26,8 +26,10 @@
     background:var(--bg);color:var(--ink);
     -webkit-font-smoothing:antialiased;line-height:1.6;
     background-image:
-      radial-gradient(circle at 12% 8%, rgba(198,154,84,.08), transparent 42%),
-      radial-gradient(circle at 88% 92%, rgba(12,63,49,.06), transparent 46%);
+      radial-gradient(circle at 15% 0%, rgba(198,154,84,.07), transparent 55%),
+      radial-gradient(circle at 85% 100%, rgba(12,63,49,.05), transparent 55%);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
     min-height:100vh;
   }
   .serif{font-family:"Noto Serif SC",serif}
@@ -143,7 +145,7 @@
   .dist-label{font-size:9px;fill:#9C8E71;font-family:"Noto Sans SC";pointer-events:none;text-anchor:middle;font-weight:500}
   .dist-label.suburb{fill:#9BA9AD}
 
-  .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s}
+  .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
   .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards}
   @keyframes pop{0%{opacity:0;transform:scale(0)}60%{transform:scale(1.35)}100%{opacity:1;transform:scale(1)}}
   /* 图层隐藏：淡出但保留已揭示状态 */
@@ -172,14 +174,14 @@
 
   /* 参考图层：地铁线 + 商圈CBD */
   .ref-metro path{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:0;
-    transition:opacity .35s;pointer-events:none;stroke-dasharray:5 5}
+    transition:opacity .35s;pointer-events:none;stroke-dasharray:5 5;vector-effect:non-scaling-stroke}
   #map-svg.show-metro .ref-metro path{opacity:.72}
   .ref-cbd g{opacity:0;transition:opacity .35s;pointer-events:none}
   #map-svg.show-cbd .ref-cbd g{opacity:1}
-  .ref-cbd .cbd-ring{fill:none;stroke:#B4432F;stroke-width:1.6;opacity:.55}
-  .ref-cbd .cbd-core{fill:#B4432F}
-  .ref-cbd .cbd-label{font-size:8.5px;fill:#8A3320;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.4px}
-  @keyframes cbdpulse{0%,100%{r:5}50%{r:8}}
+  .ref-cbd .cbd-ring{fill:none;stroke:#B4432F;stroke-width:1.6;opacity:.55;vector-effect:non-scaling-stroke}
+  .ref-cbd .cbd-core{fill:#B4432F;vector-effect:non-scaling-stroke}
+  .ref-cbd .cbd-label{font-size:8.5px;fill:#8A3320;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.4px;vector-effect:non-scaling-stroke}
+  @keyframes cbdpulse{0%,100%{opacity:.55}50%{opacity:.18}}
   #map-svg.show-cbd .ref-cbd .cbd-ring{animation:cbdpulse 2.4s ease-in-out infinite}
 
   /* 参考图层开关 */

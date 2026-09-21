@@ -102,6 +102,7 @@
       circ.setAttribute('cx',xy[0].toFixed(1));
       circ.setAttribute('cy',xy[1].toFixed(1));
       circ.setAttribute('r',r);
+      circ.setAttribute('data-br',r);          // 基础半径，缩放时反向补偿
       circ.setAttribute('fill',color);
       circ.setAttribute('stroke','#fff');
       circ.setAttribute('stroke-width', isArabica?1.4:0.9);
@@ -147,9 +148,11 @@
       var g=document.createElementNS('http://www.w3.org/2000/svg','g');
       var ring=document.createElementNS('http://www.w3.org/2000/svg','circle');
       ring.setAttribute('cx',xy[0].toFixed(1));ring.setAttribute('cy',xy[1].toFixed(1));ring.setAttribute('r',6);
+      ring.setAttribute('data-br',6);
       ring.setAttribute('class','cbd-ring');
       var core=document.createElementNS('http://www.w3.org/2000/svg','circle');
       core.setAttribute('cx',xy[0].toFixed(1));core.setAttribute('cy',xy[1].toFixed(1));core.setAttribute('r',2.6);
+      core.setAttribute('data-br',2.6);
       core.setAttribute('class','cbd-core');
       var tx=document.createElementNS('http://www.w3.org/2000/svg','text');
       tx.setAttribute('x',xy[0].toFixed(1));tx.setAttribute('y',(xy[1]-9).toFixed(1));
@@ -472,6 +475,27 @@
 
     function apply(){
       vp.setAttribute('transform','translate('+st.tx.toFixed(2)+','+st.ty.toFixed(2)+') scale('+st.k.toFixed(4)+')');
+      rescaleMarkers();
+    }
+    // 反向补偿：放大 k 倍时，点半径 / 字号 除以 k，使它们在屏幕上保持恒定精准尺寸
+    function rescaleMarkers(){
+      var k=st.k;
+      var circles=vp.querySelectorAll('circle[data-br]');
+      for(var i=0;i<circles.length;i++){
+        var c=circles[i], br=parseFloat(c.getAttribute('data-br'));
+        c.setAttribute('r',(br/k).toFixed(3));
+      }
+      // 标签字号反向补偿（地铁/商圈标签、行政区名），保持恒定可读尺寸
+      var labels=vp.querySelectorAll('.cbd-label, .dist-label');
+      for(var j=0;j<labels.length;j++){
+        var t=labels[j];
+        if(!t.getAttribute('data-bfs')){
+          var fs=parseFloat(getComputedStyle(t).fontSize)||9;
+          t.setAttribute('data-bfs',fs);
+        }
+        var bfs=parseFloat(t.getAttribute('data-bfs'));
+        t.style.fontSize=(bfs/k).toFixed(2)+'px';
+      }
     }
     // 屏幕坐标 -> SVG 用户坐标（自动处理 viewBox 与 preserveAspectRatio 的留白）
     function toSvg(cx,cy){
