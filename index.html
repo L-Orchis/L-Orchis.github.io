@@ -296,6 +296,33 @@
   .reveal.l .fac-list li::before{background:var(--l-lite)}
   .fac-list li b{color:var(--ink)}
 
+  /* 因子条目：点击揭示 */
+  .fac-item{cursor:pointer;transition:background .18s}
+  .fac-item:hover{background:rgba(0,0,0,.02)}
+  .fac-item .fac-txt{display:none}
+  .fac-item .fac-ph{color:var(--faint);font-style:normal;user-select:none;display:inline-flex;align-items:center;gap:7px}
+  .fac-item .fac-ph::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--line);flex:none;position:absolute;left:4px;top:15px}
+  .fac-item.open .fac-ph{display:none}
+  .fac-item.open .fac-txt{display:inline;animation:facIn .3s ease}
+  @keyframes facIn{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:none}}
+  /* 已揭示才显示彩色圆点 */
+  .fac-list li.fac-item::before{background:var(--line)}
+  .reveal.a .fac-list li.fac-item.open::before{background:var(--a-lite)}
+  .reveal.l .fac-list li.fac-item.open::before{background:var(--l-lite)}
+  .fac-hint{font-size:11.5px;color:var(--faint);margin:2px 0 10px;padding-left:2px}
+
+  /* 图表卡：点击呈现 */
+  .chart-card{position:relative}
+  .chart-lock{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(160deg,#FBF9F3,#F3EEE2);border-radius:16px;cursor:pointer;transition:.2s;border:1px dashed var(--line)}
+  .chart-lock:hover{background:linear-gradient(160deg,#F7F3E8,#EEE8D8)}
+  .chart-lock .cl-ic{width:44px;height:44px;border-radius:50%;background:var(--surface);display:grid;place-items:center;
+    color:var(--coffee);box-shadow:var(--shadow-sm)}
+  .chart-lock .cl-ic svg{width:22px;height:22px}
+  .chart-lock .cl-txt{font-size:13.5px;font-weight:700;color:var(--coffee-deep)}
+  .chart-lock .cl-sub{font-size:11px;color:var(--faint);margin-top:-4px}
+  .chart-card.revealed .chart-lock{display:none}
+
   /* 图表区 */
   .sec-title{font-size:22px;font-weight:900;margin:36px 0 6px;letter-spacing:.5px}
   .sec-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
@@ -356,7 +383,7 @@
     </div>
     <div class="head-txt">
       <h1 class="serif">咖啡店选址里的区位密码</h1>
-      <p>上海 · 高中地理「工业与服务业区位」探究</p>
+      <p>上海 · 高中地理「服务业区位」探究</p>
     </div>
     <div class="head-spacer"></div>
     <nav class="steps-nav" id="stepsNav">
@@ -555,40 +582,38 @@
     <div class="verdict" id="verdict"></div>
 
     <h2 class="sec-title serif" style="margin-top:8px">它们各自看重什么区位条件？</h2>
-    <p class="sec-sub">同样卖咖啡，选址逻辑却截然相反——差异来自品牌定位。</p>
+    <p class="sec-sub">同样卖咖啡，选址逻辑却截然相反——差异来自品牌定位。<b style="color:var(--coffee)">先想一想，再逐条点击揭示。</b></p>
     <div class="reveal-grid">
       <div class="reveal a">
         <div class="reveal-h"><div class="bemoji">%</div><div><b>% Arabica</b><div class="tag">市场（高消费）导向 · 集聚于顶级地段</div></div></div>
-        <ul class="fac-list">
-          <li><b>高消费客群密度</b>：只进入高收入人群与高端游客聚集的顶级商圈。</li>
-          <li><b>顶级商圈 + 地标形象</b>：外滩源、IFC、新天地、武康路——选址即品牌门面。</li>
-          <li><b>历史风貌与调性</b>：偏爱有故事、有设计感的历史街区，强化「打卡目的地」属性。</li>
-          <li><b>高地租承受力</b>：用高客单价（32–45元）+ 品牌溢价，负担得起核心地段租金。</li>
-          <li><b>宁缺毋滥</b>：全市仅约 20 家，密度极低，靠稀缺维持高端感。</li>
-        </ul>
+        <ul class="fac-list"><li class="fac-item"><span class="fac-ph">点击揭示第 1 项区位因子</span><span class="fac-txt"><b>高消费客群密度</b>：只进入高收入人群与高端游客聚集的顶级商圈。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 2 项区位因子</span><span class="fac-txt"><b>顶级商圈 + 地标形象</b>：外滩源、IFC、新天地、武康路——选址即品牌门面。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 3 项区位因子</span><span class="fac-txt"><b>历史风貌与调性</b>：偏爱有故事、有设计感的历史街区，强化「打卡目的地」属性。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 4 项区位因子</span><span class="fac-txt"><b>高地租承受力</b>：用高客单价（32–45元）+ 品牌溢价，负担得起核心地段租金。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 5 项区位因子</span><span class="fac-txt"><b>宁缺毋滥</b>：全市仅约 20 家，密度极低，靠稀缺维持高端感。</span></li></ul>
       </div>
       <div class="reveal l">
         <div class="reveal-h"><div class="bemoji" aria-label="瑞幸咖啡"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M18 16C15.5 12 15 8 11 6.5M18 16C16 11.5 12.5 10 11 6.5"/><path d="M30 16C32.5 12 33 8 37 6.5M30 16C32 11.5 35.5 10 37 6.5"/></g><path d="M24 13c4.8 0 8 4.2 8 9.5C32 30.5 28.4 37 24 37s-8-6.5-8-14.5C16 17.2 19.2 13 24 13Z" fill="currentColor"/><circle cx="20.6" cy="24" r="1.7" fill="#fff"/><circle cx="27.4" cy="24" r="1.7" fill="#fff"/><path d="M24 29.5c1.4 0 2.4 1 2.4 2.2S25 34 24 34s-2.4-1-2.4-2.3S22.6 29.5 24 29.5Z" fill="#fff"/></svg></div><div><b>瑞幸咖啡</b><div class="tag">人口 / 交通导向 · 广域高密度覆盖</div></div></div>
-        <ul class="fac-list">
-          <li><b>人流量与通勤动线</b>：紧贴写字楼、居民区、地铁站、大学城的高频人流。</li>
-          <li><b>网点密度与便利性</b>：密集布点缩短取餐距离，服务「顺路买一杯」的即时需求。</li>
-          <li><b>低租金快取小店</b>：小面积、无堂食或少堂食，成本低，能进入更多普通地段。</li>
-          <li><b>广域下沉</b>：从核心 CBD 一路铺到闵行、松江、嘉定、奉贤乃至崇明的郊区新城。</li>
-          <li><b>规模走量</b>：靠低价高频复购和门店数量取胜，覆盖面越广越好。</li>
-        </ul>
+        <ul class="fac-list"><li class="fac-item"><span class="fac-ph">点击揭示第 1 项区位因子</span><span class="fac-txt"><b>人流量与通勤动线</b>：紧贴写字楼、居民区、地铁站、大学城的高频人流。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 2 项区位因子</span><span class="fac-txt"><b>网点密度与便利性</b>：密集布点缩短取餐距离，服务「顺路买一杯」的即时需求。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 3 项区位因子</span><span class="fac-txt"><b>低租金快取小店</b>：小面积、无堂食或少堂食，成本低，能进入更多普通地段。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 4 项区位因子</span><span class="fac-txt"><b>广域下沉</b>：从核心 CBD 一路铺到闵行、松江、嘉定、奉贤乃至崇明的郊区新城。</span></li><li class="fac-item"><span class="fac-ph">点击揭示第 5 项区位因子</span><span class="fac-txt"><b>规模走量</b>：靠低价高频复购和门店数量取胜，覆盖面越广越好。</span></li></ul>
       </div>
     </div>
 
     <h2 class="sec-title serif">数据里的差异</h2>
     <p class="sec-sub">左：七项区位因子的偏好强度对比；右：两品牌在各行政区的门店数量分布。</p>
     <div class="chart-grid">
-      <div class="chart-card">
+      <div class="chart-card" id="card-radar">
         <div class="ct">区位因子偏好雷达 <span class="cs">· 数值为教学研判的偏好强度(0–100)</span></div>
         <div class="chart" id="radarChart"></div>
+        <div class="chart-lock" data-chart="radar">
+          <div class="cl-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 6.5L21 9l-5 4 1.8 7L12 16l-5.8 4L8 13 3 9l6.5-.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div class="cl-txt">点击查看区位因子雷达图</div>
+          <div class="cl-sub">对比两品牌 7 项区位因子的偏好强度</div>
+        </div>
       </div>
-      <div class="chart-card">
+      <div class="chart-card" id="card-bar">
         <div class="ct">各区门店数量分布 <span class="cs">· 中心城区 → 郊区</span></div>
         <div class="chart" id="barChart"></div>
+        <div class="chart-lock" data-chart="bar">
+          <div class="cl-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="cl-txt">点击查看各区门店分布图</div>
+          <div class="cl-sub">看两品牌在 16 个区的门店数量差异</div>
+        </div>
       </div>
     </div>
 

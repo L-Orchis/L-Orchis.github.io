@@ -363,9 +363,9 @@
   }
 
   /* ---------- 6. ECharts 雷达 + 柱状 ---------- */
-  var radarChart, barChart, chartsBuilt=false;
-  function buildCharts(){
-    if(chartsBuilt) return; chartsBuilt=true;
+  var radarChart, barChart, radarBuilt=false, barBuilt=false;
+  function buildRadar(){
+    if(radarBuilt) return; radarBuilt=true;
     var AC='#0C3F31', LC='#12327E';
     // 雷达
     radarChart = echarts.init(document.getElementById('radarChart'));
@@ -391,6 +391,11 @@
         ]
       }]
     });
+    setTimeout(function(){ radarChart&&radarChart.resize(); },40);
+  }
+  function buildBar(){
+    if(barBuilt) return; barBuilt=true;
+    var AC='#0C3F31', LC='#12327E';
     // 柱状（各区门店数）
     var cats = D.bar.map(function(b){return b.district;});
     barChart = echarts.init(document.getElementById('barChart'));
@@ -410,6 +415,7 @@
           itemStyle:{color:LC,borderRadius:[3,3,0,0]},barMaxWidth:16}
       ]
     });
+    setTimeout(function(){ barChart&&barChart.resize(); },40);
   }
   // 对比表
   var CMP=[
@@ -441,9 +447,7 @@
       el.classList.toggle('done', i<n);
     });
     window.scrollTo({top:0,behavior:'smooth'});
-    if(n===2){ buildCharts(); buildCmpTable();
-      setTimeout(function(){ radarChart&&radarChart.resize(); barChart&&barChart.resize(); },60);
-    }
+    if(n===2){ buildCmpTable(); }   // 图表改为点击卡片才构建（见下方 initClickReveal）
   };
   // nav 点击（仅允许跳到已解锁的步骤：这里放开自由跳，但 stage2 需已提交）
   document.querySelectorAll('.snav').forEach(function(el){
@@ -464,6 +468,23 @@
   new ResizeObserver(function(){
     radarChart&&radarChart.resize(); barChart&&barChart.resize();
   }).observe(document.body);
+
+  /* ---------- 点击揭示：区位因子逐条 + 图表卡 ---------- */
+  (function initClickReveal(){
+    // 因子条目：点击展开真实内容
+    document.querySelectorAll('.fac-item').forEach(function(li){
+      li.addEventListener('click', function(){ li.classList.add('open'); });
+    });
+    // 图表卡：点击锁层后构建并显示对应图表
+    document.querySelectorAll('.chart-lock').forEach(function(lock){
+      lock.addEventListener('click', function(){
+        var which=lock.getAttribute('data-chart');
+        var card=lock.closest('.chart-card');
+        card.classList.add('revealed');
+        if(which==='radar') buildRadar(); else if(which==='bar') buildBar();
+      });
+    });
+  })();
 
   /* ---------- 8. 地图矢量缩放与平移（SVG transform，无损清晰） ---------- */
   (function mapZoomPan(){
