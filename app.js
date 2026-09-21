@@ -156,6 +156,7 @@
       core.setAttribute('class','cbd-core');
       var tx=document.createElementNS('http://www.w3.org/2000/svg','text');
       tx.setAttribute('x',xy[0].toFixed(1));tx.setAttribute('y',(xy[1]-9).toFixed(1));
+      tx.setAttribute('data-cx',xy[0].toFixed(1));tx.setAttribute('data-cy',xy[1].toFixed(1));tx.setAttribute('data-off','9');
       tx.setAttribute('class','cbd-label');tx.textContent=c.name;
       g.appendChild(ring);g.appendChild(core);g.appendChild(tx);
       gCbd.appendChild(g);
@@ -495,6 +496,11 @@
         }
         var bfs=parseFloat(t.getAttribute('data-bfs'));
         t.style.fontSize=(bfs/k).toFixed(2)+'px';
+        // 带 data-cy 的标签(CBD)：偏移量随 k 反向补偿，字始终贴着圆点
+        if(t.getAttribute('data-cy')){
+          var cy=parseFloat(t.getAttribute('data-cy')), off=parseFloat(t.getAttribute('data-off'))||9;
+          t.setAttribute('y',(cy-off/k).toFixed(2));
+        }
       }
     }
     // 屏幕坐标 -> SVG 用户坐标（自动处理 viewBox 与 preserveAspectRatio 的留白）
