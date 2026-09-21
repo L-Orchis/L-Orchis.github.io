@@ -125,6 +125,18 @@
   }
   buildStores('luckin'); buildStores('arabica'); // Arabica 后建 => SVG 中位于顶层，hover 命中正确的点
 
+  /* ---------- 3.4 黄浦江水系 ---------- */
+  (function buildRiver(){
+    if(!D.river||!D.river.huangpu) return;
+    var gRiver=document.getElementById('g-river');
+    if(!gRiver) return;
+    var pts=D.river.huangpu, dstr='';
+    pts.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
+    var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',dstr);
+    gRiver.appendChild(path);
+  })();
+
   /* ---------- 3.5 参考图层：地铁主干线 + 商圈CBD ---------- */
   (function buildReferenceLayers(){
     if(!D.ref) return;

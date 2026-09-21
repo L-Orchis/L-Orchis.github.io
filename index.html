@@ -136,6 +136,8 @@
   .lg .sw{width:11px;height:11px;border-radius:50%}
   .lg .sw.zc{background:#EADFC8;border:1px solid #D8C9A6;border-radius:3px}
   .lg .sw.zs{background:#E4EAEC;border:1px solid #CBD6D9;border-radius:3px}
+  .lg .sw.zr{background:#8Fc4dd;border-radius:3px}
+  .river path{fill:none;stroke:#9AC9E0;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9;vector-effect:non-scaling-stroke}
 
   .map-box{position:relative;width:100%;border-radius:12px;overflow:hidden;
     background:linear-gradient(160deg,#F7F3EA,#EFEADD);touch-action:none}
@@ -472,12 +474,14 @@
           <div class="map-legend">
             <span class="lg"><span class="sw zc"></span>中心城区</span>
             <span class="lg"><span class="sw zs"></span>郊区</span>
+            <span class="lg"><span class="sw zr"></span>黄浦江</span>
           </div>
         </div>
         <div class="map-box" id="mapBox">
           <svg id="map-svg" viewBox="0 0 760 720" preserveAspectRatio="xMidYMid meet">
             <g id="g-viewport">
               <g id="g-dist" class="dist"></g>
+              <g id="g-river" class="river"></g>
               <g id="g-metro" class="ref-metro"></g>
               <g id="g-cbd" class="ref-cbd"></g>
               <g id="g-labels"></g>
