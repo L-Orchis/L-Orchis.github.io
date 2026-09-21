@@ -184,6 +184,11 @@
   .ref-cbd .cbd-ring{fill:none;stroke:#B4432F;stroke-width:1.6;opacity:.55;vector-effect:non-scaling-stroke}
   .ref-cbd .cbd-core{fill:#B4432F;vector-effect:non-scaling-stroke}
   .ref-cbd .cbd-label{font-size:8.5px;fill:#8A3320;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.4px;vector-effect:non-scaling-stroke}
+  /* 咖啡加工厂图层 */
+  .ref-factory g{opacity:0;transition:opacity .35s;pointer-events:none}
+  #map-svg.show-factory .ref-factory g{opacity:1}
+  .ref-factory .fac-mk{fill:#7A4E28;stroke:#FAF7EF;stroke-width:1.4;vector-effect:non-scaling-stroke}
+  .ref-factory .fac-label{font-size:8px;fill:#5E3A1C;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.2px;vector-effect:non-scaling-stroke}
   @keyframes cbdpulse{0%,100%{opacity:.55}50%{opacity:.18}}
   #map-svg.show-cbd .ref-cbd .cbd-ring{animation:cbdpulse 2.4s ease-in-out infinite}
 
@@ -484,6 +489,7 @@
               <g id="g-river" class="river"></g>
               <g id="g-metro" class="ref-metro"></g>
               <g id="g-cbd" class="ref-cbd"></g>
+              <g id="g-factory" class="ref-factory"></g>
               <g id="g-labels"></g>
               <g id="g-ripple"></g>
               <g id="g-stores"></g>
@@ -524,6 +530,10 @@
           <button class="reflyr" id="refCbd" type="button">
             <span class="ref-ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="5" height="11" stroke="currentColor" stroke-width="1.8"/><rect x="10.5" y="4" width="5" height="16" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="12" width="4" height="8" stroke="currentColor" stroke-width="1.8"/></svg></span>
             主要商圈 / CBD
+          </button>
+          <button class="reflyr" id="refFactory" type="button">
+            <span class="ref-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21V9l6 4V9l6 4V6l6 3v12H3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            咖啡加工厂
           </button>
         </div>
         <p style="font-size:11px;color:var(--faint);margin-top:8px;text-align:center">品牌开关：单独查看某个品牌，避免叠在一起看不清 · 参考图层：叠加地铁与商圈，帮你理解「为什么选这里」</p>

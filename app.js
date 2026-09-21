@@ -173,9 +173,28 @@
       g.appendChild(ring);g.appendChild(core);g.appendChild(tx);
       gCbd.appendChild(g);
     });
+    // 咖啡加工厂：工厂形标记 + 标签（工业区位，集中郊区）
+    var gFactory=document.getElementById('g-factory');
+    if(gFactory && D.factory){
+      D.factory.forEach(function(fac){
+        var xy=project(fac.lng,fac.lat), cx=xy[0], cy=xy[1];
+        var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+        // 工厂标记：小房顶折线图形（相对锚点 cx,cy）
+        var mk=document.createElementNS('http://www.w3.org/2000/svg','path');
+        var d='M'+(cx-4)+','+(cy+3.2)+'V'+(cy-0.5)+'l3-2v2l3-2v2l3-2v5.2Z';
+        mk.setAttribute('d',d); mk.setAttribute('class','fac-mk');
+        mk.setAttribute('data-shape','factory'); mk.setAttribute('data-cx',cx.toFixed(2)); mk.setAttribute('data-cy',cy.toFixed(2));
+        var tx=document.createElementNS('http://www.w3.org/2000/svg','text');
+        tx.setAttribute('x',cx.toFixed(1)); tx.setAttribute('y',(cy-6).toFixed(1));
+        tx.setAttribute('data-cx',cx.toFixed(1)); tx.setAttribute('data-cy',cy.toFixed(1)); tx.setAttribute('data-off','6');
+        tx.setAttribute('class','fac-label'); tx.textContent=fac.name;
+        g.appendChild(mk); g.appendChild(tx);
+        gFactory.appendChild(g);
+      });
+    }
     // 开关
-    var refMetroOn=false, refCbdOn=false;
-    var btnM=document.getElementById('refMetro'), btnC=document.getElementById('refCbd');
+    var refMetroOn=false, refCbdOn=false, refFactoryOn=false;
+    var btnM=document.getElementById('refMetro'), btnC=document.getElementById('refCbd'), btnF=document.getElementById('refFactory');
     btnM.addEventListener('click',function(){
       refMetroOn=!refMetroOn;
       svg.classList.toggle('show-metro',refMetroOn);
@@ -185,6 +204,11 @@
       refCbdOn=!refCbdOn;
       svg.classList.toggle('show-cbd',refCbdOn);
       btnC.classList.toggle('on',refCbdOn);
+    });
+    if(btnF) btnF.addEventListener('click',function(){
+      refFactoryOn=!refFactoryOn;
+      svg.classList.toggle('show-factory',refFactoryOn);
+      btnF.classList.toggle('on',refFactoryOn);
     });
   })();
 
@@ -520,7 +544,7 @@
         c.setAttribute('r',(br/k).toFixed(3));
       }
       // 标签字号反向补偿（地铁/商圈标签、行政区名），保持恒定可读尺寸
-      var labels=vp.querySelectorAll('.cbd-label, .dist-label');
+      var labels=vp.querySelectorAll('.cbd-label, .dist-label, .fac-label');
       for(var j=0;j<labels.length;j++){
         var t=labels[j];
         if(!t.getAttribute('data-bfs')){
