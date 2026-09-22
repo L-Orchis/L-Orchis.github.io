@@ -127,17 +127,28 @@
 
   /* ---------- 3.4 黄浦江水系 ---------- */
   (function buildRiver(){
-    if(!D.river||!D.river.huangpu) return;
+    if(!D.river) return;
     var gRiver=document.getElementById('g-river');
     if(!gRiver) return;
-    var pts=D.river.huangpu, dstr='';
-    pts.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
-    // 双层描边：浅色外缘 + 深色主体，做出有宽度的自然江面（随缩放一起变宽）
-    var edge=document.createElementNS('http://www.w3.org/2000/svg','path');
-    edge.setAttribute('d',dstr); edge.setAttribute('class','river-edge');
-    var main=document.createElementNS('http://www.w3.org/2000/svg','path');
-    main.setAttribute('d',dstr); main.setAttribute('class','river-main');
-    gRiver.appendChild(edge); gRiver.appendChild(main);
+    var water=D.river.huangpu_water;
+    if(water && water.length){
+      // 真实水域面：每个多边形填充成江面
+      water.forEach(function(ring){
+        var dstr='';
+        ring.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
+        dstr+='Z';
+        var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+        path.setAttribute('d',dstr);
+        gRiver.appendChild(path);
+      });
+    } else if(D.river.huangpu && D.river.huangpu.length){
+      // 兜底：中心线（无水域面数据时）
+      var pts=D.river.huangpu, dstr='';
+      pts.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
+      var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',dstr); path.setAttribute('style','fill:none;stroke:#8FC3DD;stroke-width:6;opacity:.9');
+      gRiver.appendChild(path);
+    }
   })();
 
   /* ---------- 3.5 参考图层：地铁主干线 + 商圈CBD ---------- */
