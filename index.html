@@ -145,11 +145,10 @@
   .dist path.hi{fill:#F3E9D2}
   .dist-label{font-size:9px;fill:#9C8E71;font-family:"Noto Sans SC";pointer-events:none;text-anchor:middle;font-weight:500}
   .dist-label.suburb{fill:#9BA9AD}
-  /* 黄浦江：分割陆地效果——隔离层用页面背景色把两岸区界推开(切出水道)，再叠江体与江心 */
+  /* 黄浦江：细水线嵌在浦东/浦西两区交界缝上，土地完整铺到江边（不抹土地、不叠盖区块） */
   .river path{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-  .river path.river-gap{stroke:#F1EDE2;stroke-width:15}
-  .river path.river-body{stroke:#7FB8D6;stroke-width:9;opacity:.95}
-  .river path.river-core{stroke:#5AA0C8;stroke-width:5}
+  .river path.river-body{stroke:#8FC3DD;stroke-width:3.2;opacity:.95}
+  .river path.river-core{stroke:#4E97C4;stroke-width:1.8}
 
   .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
   .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards}

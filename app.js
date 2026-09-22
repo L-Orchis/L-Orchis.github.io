@@ -97,7 +97,7 @@
     if(!line || !line.length) return;
     var dstr='';
     line.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
-    ['river-gap','river-body','river-core'].forEach(function(cls){
+    ['river-body','river-core'].forEach(function(cls){
       var p=document.createElementNS('http://www.w3.org/2000/svg','path');
       p.setAttribute('d',dstr); p.setAttribute('class',cls);
       gRiver.appendChild(p);
