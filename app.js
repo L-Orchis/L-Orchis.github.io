@@ -556,6 +556,14 @@
         var c=circles[i], br=parseFloat(c.getAttribute('data-br'));
         c.setAttribute('r',(br/k).toFixed(3));
       }
+      // 地铁线：放大时只允许略微变粗（封顶 1.6 倍），不再随地图无限增粗
+      var metros=vp.querySelectorAll('.ref-metro path');
+      var mGrow=1+0.3*(k-1); if(mGrow>1.6) mGrow=1.6; if(mGrow<1) mGrow=1;
+      for(var mi=0;mi<metros.length;mi++){
+        var mp=metros[mi];
+        mp.style.strokeWidth=(2.2*mGrow/k).toFixed(3);
+        mp.style.strokeDasharray=(7*mGrow/k).toFixed(2)+' '+(7*mGrow/k).toFixed(2);
+      }
       // 标签字号反向补偿（地铁/商圈标签、行政区名），保持恒定可读尺寸
       var labels=vp.querySelectorAll('.cbd-label, .dist-label, .fac-label');
       for(var j=0;j<labels.length;j++){

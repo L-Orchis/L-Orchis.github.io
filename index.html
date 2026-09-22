@@ -90,8 +90,8 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .hero-art .pin{position:absolute;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%)}
   .hero-art .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-  .hero-art .core .big{font-size:96px;font-weight:900;color:var(--a);line-height:1}
-  .hero-art .core small{font-size:16px;color:var(--muted);letter-spacing:3px}
+  .hero-art .core .big{font-size:120px;font-weight:900;color:var(--a);line-height:1}
+  .hero-art .core small{font-size:18px;color:var(--muted);letter-spacing:3px}
 
   .brand-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
   @media(max-width:720px){.brand-cards{grid-template-columns:1fr}}
@@ -168,8 +168,8 @@
   .lyr.arabica .lyr-dot{background:var(--a)}
   .lyr.luckin .lyr-dot{background:var(--l)}
   .lyr .lyr-txt{flex:1}
-  .lyr .lyr-txt b{font-size:12.5px;font-weight:700;display:block;line-height:1.3}
-  .lyr .lyr-txt span{font-size:10.5px;color:var(--faint)}
+  .lyr .lyr-txt b{font-size:14.5px;font-weight:700;display:block;line-height:1.3}
+  .lyr .lyr-txt span{font-size:12.5px;color:var(--faint)}
   .lyr .lyr-eye{width:18px;height:18px;flex:none;color:var(--muted)}
   .lyr.off .lyr-eye .eye-open{display:none}
   .lyr:not(.off) .lyr-eye .eye-shut{display:none}
@@ -202,7 +202,7 @@
   /* 参考图层开关 */
   .ref-toggle{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;
     padding-top:10px;border-top:1px dashed var(--line)}
-  .ref-lbl{font-size:11.5px;font-weight:700;color:var(--muted);flex:none}
+  .ref-lbl{font-size:13.5px;font-weight:700;color:var(--muted);flex:none}
   .reflyr{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:14px;font-weight:600;
     color:var(--muted);background:var(--paper);border:1.5px solid var(--line);border-radius:20px;
     padding:9px 17px;cursor:pointer;transition:.2s}
@@ -305,17 +305,17 @@
   .fac-list{list-style:none}
   .fac-list li{font-size:15px;color:var(--muted);padding:10px 0 10px 26px;position:relative;border-bottom:1px dashed var(--line-soft);line-height:1.6}
   .fac-list li:last-child{border-bottom:none}
-  .fac-list li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%}
+  .fac-list li::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%}
   .reveal.a .fac-list li::before{background:var(--a-lite)}
   .reveal.l .fac-list li::before{background:var(--l-lite)}
-  .fac-list li b{color:var(--ink)}
+  .fac-list li b{color:var(--ink);font-size:16.5px;font-weight:700}
 
   /* 因子条目：点击揭示 */
   .fac-item{cursor:pointer;transition:background .18s}
   .fac-item:hover{background:rgba(0,0,0,.02)}
   .fac-item .fac-txt{display:none}
   .fac-item .fac-ph{color:var(--faint);font-style:normal;user-select:none;display:inline-flex;align-items:center;gap:7px}
-  .fac-item .fac-ph::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--line);flex:none;position:absolute;left:4px;top:15px}
+  .fac-item .fac-ph::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);flex:none;position:absolute;left:4px;top:19px}
   .fac-item.open .fac-ph{display:none}
   .fac-item.open .fac-txt{display:inline;animation:facIn .3s ease}
   @keyframes facIn{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:none}}
@@ -475,7 +475,7 @@
   <section class="stage wrap" id="stage1">
     <span class="eyebrow">STEP 02 · 观察与判断</span>
     <h2 class="h-big serif" style="font-size:clamp(24px,3.4vw,34px)">把「品牌 A / 品牌 B」拖到地图上</h2>
-    <p class="lead" style="margin-bottom:22px">两张卡片各代表一个真实品牌（顺序已打乱）。把卡片拖进地图，它的门店分布就会浮现。<b style="color:var(--ink)">仔细观察谁扎堆市中心、谁铺满全城</b>，再判断 A、B 各是哪个品牌。</p>
+    <p class="lead" style="margin-bottom:22px;max-width:none;white-space:nowrap">两张卡片各代表一个真实品牌（顺序已打乱）。把卡片拖进地图，它的门店分布就会浮现。<b style="color:var(--ink)">仔细观察谁扎堆市中心、谁铺满全城</b>，再判断 A、B 各是哪个品牌。</p>
 
     <div class="explore">
       <div class="map-panel">
