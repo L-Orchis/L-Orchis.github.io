@@ -190,6 +190,11 @@
   #map-svg.show-factory .ref-factory g{opacity:1}
   .ref-factory .fac-mk{fill:#7A4E28;stroke:#FAF7EF;stroke-width:1.4;vector-effect:non-scaling-stroke}
   .ref-factory .fac-label{font-size:8px;fill:#5E3A1C;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.2px;vector-effect:non-scaling-stroke}
+  /* 顶层标签：CBD/加工厂名字提到门店点之上，避免被圆点遮挡 */
+  #g-toplabels .cbd-label{opacity:0;transition:opacity .35s;pointer-events:none;font-size:8.5px;fill:#8A3320;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.6px;vector-effect:non-scaling-stroke}
+  #map-svg.show-cbd #g-toplabels .cbd-label{opacity:1}
+  #g-toplabels .fac-label{opacity:0;transition:opacity .35s;pointer-events:none;font-size:8px;fill:#5E3A1C;font-weight:600;font-family:"Noto Sans SC";text-anchor:middle;paint-order:stroke;stroke:#FAF7EF;stroke-width:2.4px;vector-effect:non-scaling-stroke}
+  #map-svg.show-factory #g-toplabels .fac-label{opacity:1}
   @keyframes cbdpulse{0%,100%{opacity:.55}50%{opacity:.18}}
   #map-svg.show-cbd .ref-cbd .cbd-ring{animation:cbdpulse 2.4s ease-in-out infinite}
 
@@ -494,6 +499,7 @@
               <g id="g-labels"></g>
               <g id="g-ripple"></g>
               <g id="g-stores"></g>
+              <g id="g-toplabels"></g>
             </g>
           </svg>
           <div class="drop-hint"><div class="txt">松手，揭示门店分布</div></div>

@@ -157,6 +157,7 @@
     var svg=document.getElementById('map-svg');
     var gMetro=document.getElementById('g-metro');
     var gCbd=document.getElementById('g-cbd');
+    var gTop=document.getElementById('g-toplabels');
     // 地铁线：每条一种颜色（官方线路色系）
     var metroColors={'1号线':'#E4002B','2号线':'#8CC63F','9号线':'#87CEEB','10号线':'#C6A4D6'};
     Object.keys(D.ref.metro).forEach(function(line){
@@ -184,8 +185,9 @@
       tx.setAttribute('x',xy[0].toFixed(1));tx.setAttribute('y',(xy[1]-9).toFixed(1));
       tx.setAttribute('data-cx',xy[0].toFixed(1));tx.setAttribute('data-cy',xy[1].toFixed(1));tx.setAttribute('data-off','9');
       tx.setAttribute('class','cbd-label');tx.textContent=c.name;
-      g.appendChild(ring);g.appendChild(core);g.appendChild(tx);
+      g.appendChild(ring);g.appendChild(core);
       gCbd.appendChild(g);
+      if(gTop) gTop.appendChild(tx); else g.appendChild(tx);
     });
     // 咖啡加工厂：工厂形标记 + 标签（工业区位，集中郊区）
     var gFactory=document.getElementById('g-factory');
@@ -202,8 +204,9 @@
         tx.setAttribute('x',cx.toFixed(1)); tx.setAttribute('y',(cy-6).toFixed(1));
         tx.setAttribute('data-cx',cx.toFixed(1)); tx.setAttribute('data-cy',cy.toFixed(1)); tx.setAttribute('data-off','6');
         tx.setAttribute('class','fac-label'); tx.textContent=fac.name;
-        g.appendChild(mk); g.appendChild(tx);
+        g.appendChild(mk);
         gFactory.appendChild(g);
+        if(gTop) gTop.appendChild(tx); else g.appendChild(tx);
       });
     }
     // 开关
