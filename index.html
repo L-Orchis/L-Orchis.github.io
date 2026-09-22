@@ -90,8 +90,8 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .hero-art .pin{position:absolute;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%)}
   .hero-art .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-  .hero-art .core .big{font-size:64px;font-weight:900;color:var(--a);line-height:1}
-  .hero-art .core small{font-size:12px;color:var(--muted);letter-spacing:2px}
+  .hero-art .core .big{font-size:96px;font-weight:900;color:var(--a);line-height:1}
+  .hero-art .core small{font-size:16px;color:var(--muted);letter-spacing:3px}
 
   .brand-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
   @media(max-width:720px){.brand-cards{grid-template-columns:1fr}}
@@ -105,14 +105,14 @@
   .bemoji svg{width:30px;height:30px;color:#fff}
   .bcard.a .bemoji{background:var(--a)}
   .bcard.l .bemoji{background:var(--l)}
-  .bcard h3{font-size:19px;font-weight:800}
-  .bcard .tag{font-size:12px;color:var(--muted);margin-top:2px}
-  .bcard p{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .bcard h3{font-size:21px;font-weight:800}
+  .bcard .tag{font-size:14px;color:var(--muted);margin-top:2px}
+  .bcard p{font-size:15px;color:var(--muted);margin-top:4px;line-height:1.7}
   .bstats{display:flex;gap:18px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
-  .bstat .n{font-size:20px;font-weight:900}
+  .bstat .n{font-size:23px;font-weight:900}
   .bcard.a .bstat .n{color:var(--a-lite)}
   .bcard.l .bstat .n{color:var(--l-lite)}
-  .bstat .k{font-size:11px;color:var(--faint)}
+  .bstat .k{font-size:13px;color:var(--faint)}
 
   .btn{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-size:15px;font-weight:700;
     color:#fff;background:var(--a);border:none;border-radius:12px;padding:15px 30px;cursor:pointer;
@@ -177,9 +177,9 @@
 
   /* 参考图层：地铁线 + 商圈CBD */
   /* 地铁线：线宽随地图缩放增粗（去 non-scaling），虚线更疏，带柔和投影做出立体过渡 */
-  .ref-metro path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;
-    transition:opacity .35s;pointer-events:none;stroke-dasharray:9 8;
-    filter:drop-shadow(0 1.2px 1.6px rgba(30,40,60,.45))}
+  .ref-metro path{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:0;
+    transition:opacity .35s;pointer-events:none;stroke-dasharray:7 7;
+    filter:drop-shadow(0 1px 1.3px rgba(30,40,60,.4))}
   #map-svg.show-metro .ref-metro path{opacity:.82}
   .ref-cbd g{opacity:0;transition:opacity .35s;pointer-events:none}
   #map-svg.show-cbd .ref-cbd g{opacity:1}
@@ -203,12 +203,12 @@
   .ref-toggle{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;
     padding-top:10px;border-top:1px dashed var(--line)}
   .ref-lbl{font-size:11.5px;font-weight:700;color:var(--muted);flex:none}
-  .reflyr{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:12px;font-weight:600;
+  .reflyr{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:14px;font-weight:600;
     color:var(--muted);background:var(--paper);border:1.5px solid var(--line);border-radius:20px;
-    padding:6px 13px;cursor:pointer;transition:.2s}
+    padding:9px 17px;cursor:pointer;transition:.2s}
   .reflyr:hover{border-color:var(--faint)}
-  .reflyr .ref-ic{width:15px;height:15px;display:grid;place-items:center;color:var(--faint)}
-  .reflyr .ref-ic svg{width:15px;height:15px}
+  .reflyr .ref-ic{width:18px;height:18px;display:grid;place-items:center;color:var(--faint)}
+  .reflyr .ref-ic svg{width:18px;height:18px}
   .reflyr.on{background:rgba(180,67,47,.1);border-color:#B4432F;color:#8A3320}
   .reflyr.on .ref-ic{color:#B4432F}
 
@@ -303,7 +303,7 @@
   .reveal-h b{font-size:17px}
   .reveal-h .tag{font-size:11.5px;color:var(--muted)}
   .fac-list{list-style:none}
-  .fac-list li{font-size:13px;color:var(--muted);padding:8px 0 8px 24px;position:relative;border-bottom:1px dashed var(--line-soft)}
+  .fac-list li{font-size:15px;color:var(--muted);padding:10px 0 10px 26px;position:relative;border-bottom:1px dashed var(--line-soft);line-height:1.6}
   .fac-list li:last-child{border-bottom:none}
   .fac-list li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%}
   .reveal.a .fac-list li::before{background:var(--a-lite)}
@@ -422,7 +422,7 @@
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <div class="ring"></div>
         <div class="core"><div class="big serif">?</div><small>WHERE & WHY</small></div>
       </div>
     </div>
@@ -433,7 +433,7 @@
           <div class="bemoji">%</div>
           <div><h3>% Arabica</h3><div class="tag">源自日本京都 · 精品咖啡</div></div>
         </div>
-        <p>以极简白色美学、单一产地精品豆闻名的高端品牌。一杯约 <b style="color:var(--ink)">32–45 元</b>，把每家店都当作「城市地标」来经营，选址即品牌形象，宁缺毋滥。</p>
+        <p>以极简白色美学、单一产地精品豆闻名的高端品牌，一杯约 <b style="color:var(--ink)">32–45 元</b>。</p>
         <div class="bstats">
           <div class="bstat"><div class="n" id="hs-a-n">20</div><div class="k">上海门店(全量)</div></div>
           <div class="bstat"><div class="n">目的地型</div><div class="k">到店逻辑</div></div>
@@ -456,7 +456,7 @@
           </div>
           <div><h3>瑞幸咖啡 Luckin</h3><div class="tag">中国本土 · 高性价比连锁</div></div>
         </div>
-        <p>中国门店规模最大的连锁咖啡，主打 <b style="color:var(--ink)">9.9–16 元</b> 高性价比、数字化点单、小店快取。靠高频复购和规模走量，哪里有人流就开到哪里。</p>
+        <p>中国门店规模最大的连锁咖啡，主打 <b style="color:var(--ink)">9.9–16 元</b> 高性价比、数字化点单、小店快取。</p>
         <div class="bstats">
           <div class="bstat"><div class="n" id="hs-l-n">183</div><div class="k">采样门店(点位)</div></div>
           <div class="bstat"><div class="n">便利型</div><div class="k">到店逻辑</div></div>
