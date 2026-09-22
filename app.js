@@ -556,12 +556,12 @@
         var c=circles[i], br=parseFloat(c.getAttribute('data-br'));
         c.setAttribute('r',(br/k).toFixed(3));
       }
-      // 地铁线：放大时只允许极小幅变粗（封顶 1.4 倍），整体更细
+      // 地铁线：放大时略微变粗（封顶 1.5 倍），比最细版稍粗一点
       var metros=vp.querySelectorAll('.ref-metro path');
-      var mGrow=1+0.2*(k-1); if(mGrow>1.4) mGrow=1.4; if(mGrow<1) mGrow=1;
+      var mGrow=1+0.25*(k-1); if(mGrow>1.5) mGrow=1.5; if(mGrow<1) mGrow=1;
       for(var mi=0;mi<metros.length;mi++){
         var mp=metros[mi];
-        mp.style.strokeWidth=(1.8*mGrow/k).toFixed(3);
+        mp.style.strokeWidth=(2*mGrow/k).toFixed(3);
         mp.style.strokeDasharray=(7*mGrow/k).toFixed(2)+' '+(7*mGrow/k).toFixed(2);
       }
       // 标签字号反向补偿（地铁/商圈标签、行政区名），保持恒定可读尺寸
