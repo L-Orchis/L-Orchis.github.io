@@ -148,8 +148,8 @@
   /* 黄浦江：真正从行政区几何里挖出的江带（有宽度的水体），浦西浦东边界各退到江两岸 */
   .river path{fill:#9FD0E8;stroke:#6BA8CC;stroke-width:0.6;fill-rule:evenodd;pointer-events:none}
 
-  .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
-  .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards}
+  .store-dot{opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
+  .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards;pointer-events:auto}
   @keyframes pop{0%{opacity:0;transform:scale(0)}60%{transform:scale(1.35)}100%{opacity:1;transform:scale(1)}}
   /* 图层隐藏：淡出但保留已揭示状态 */
   #g-stores.hide-arabica .dot-arabica{display:none}

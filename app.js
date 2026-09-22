@@ -565,7 +565,13 @@
           t.setAttribute('data-bfs',fs);
         }
         var bfs=parseFloat(t.getAttribute('data-bfs'));
-        t.style.fontSize=(bfs/k).toFixed(2)+'px';
+        // 区名：随放大逐渐增大，放到最大时屏幕字号约为基础的1.3倍（+30%），放大后更清晰；CBD/加工厂标签保持恒定
+        if(t.getAttribute('class') && t.getAttribute('class').indexOf('dist-label')>=0){
+          var grow=1+0.3*(k-1)/(MAX-1); if(grow<1) grow=1;
+          t.style.fontSize=(bfs*grow/k).toFixed(2)+'px';
+        } else {
+          t.style.fontSize=(bfs/k).toFixed(2)+'px';
+        }
         // 带 data-cy 的标签(CBD)：偏移量随 k 反向补偿，字始终贴着圆点
         if(t.getAttribute('data-cy')){
           var cy=parseFloat(t.getAttribute('data-cy')), off=parseFloat(t.getAttribute('data-off'))||9;
