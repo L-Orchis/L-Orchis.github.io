@@ -556,9 +556,9 @@
         var c=circles[i], br=parseFloat(c.getAttribute('data-br'));
         c.setAttribute('r',(br/k).toFixed(3));
       }
-      // 地铁线：放大时略微变粗（封顶 1.5 倍），比最细版稍粗一点
+      // 地铁线：放大时略微变粗（封顶 1.7 倍），比最细版稍粗一点
       var metros=vp.querySelectorAll('.ref-metro path');
-      var mGrow=1+0.25*(k-1); if(mGrow>1.5) mGrow=1.5; if(mGrow<1) mGrow=1;
+      var mGrow=1+0.25*(k-1); if(mGrow>1.7) mGrow=1.7; if(mGrow<1) mGrow=1;
       for(var mi=0;mi<metros.length;mi++){
         var mp=metros[mi];
         mp.style.strokeWidth=(2*mGrow/k).toFixed(3);
