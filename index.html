@@ -140,15 +140,13 @@
   .map-box{position:relative;width:100%;border-radius:12px;overflow:hidden;
     background:linear-gradient(160deg,#F7F3EA,#EFEADD);touch-action:none}
   #map-svg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none;-moz-user-select:none}
-  .dist path{fill:#EADFC8;stroke:#CDBE9B;stroke-width:.8;transition:fill .4s}
+  .dist path{fill:#EADFC8;stroke:#CDBE9B;stroke-width:.8;transition:fill .4s;fill-rule:evenodd}
   .dist path.suburb{fill:#E7ECEE;stroke:#CBD6D9}
   .dist path.hi{fill:#F3E9D2}
   .dist-label{font-size:9px;fill:#9C8E71;font-family:"Noto Sans SC";pointer-events:none;text-anchor:middle;font-weight:500}
   .dist-label.suburb{fill:#9BA9AD}
-  /* 黄浦江：细水线嵌在浦东/浦西两区交界缝上，土地完整铺到江边（不抹土地、不叠盖区块） */
-  .river path{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-  .river path.river-body{stroke:#8FC3DD;stroke-width:3.2;opacity:.95}
-  .river path.river-core{stroke:#4E97C4;stroke-width:1.8}
+  /* 黄浦江：真正从行政区几何里挖出的江带（有宽度的水体），浦西浦东边界各退到江两岸 */
+  .river path{fill:#9FD0E8;stroke:#6BA8CC;stroke-width:0.6;fill-rule:evenodd;pointer-events:none}
 
   .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
   .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards}
