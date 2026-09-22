@@ -176,9 +176,11 @@
   .lyr.disabled{opacity:.3;pointer-events:none}
 
   /* 参考图层：地铁线 + 商圈CBD */
-  .ref-metro path{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:0;
-    transition:opacity .35s;pointer-events:none;stroke-dasharray:5 5;vector-effect:non-scaling-stroke}
-  #map-svg.show-metro .ref-metro path{opacity:.72}
+  /* 地铁线：线宽随地图缩放增粗（去 non-scaling），虚线更疏，带柔和投影做出立体过渡 */
+  .ref-metro path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;
+    transition:opacity .35s;pointer-events:none;stroke-dasharray:9 8;
+    filter:drop-shadow(0 1.2px 1.6px rgba(30,40,60,.45))}
+  #map-svg.show-metro .ref-metro path{opacity:.82}
   .ref-cbd g{opacity:0;transition:opacity .35s;pointer-events:none}
   #map-svg.show-cbd .ref-cbd g{opacity:1}
   .ref-cbd .cbd-ring{fill:none;stroke:#B4432F;stroke-width:1.6;opacity:.55;vector-effect:non-scaling-stroke}
