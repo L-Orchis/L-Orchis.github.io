@@ -88,6 +88,22 @@
     return d;
   }
 
+  /* ---------- 2.5 黄浦江：分割陆地（隔离层切开两岸区界 + 江体 + 江心） ---------- */
+  (function buildRiver(){
+    if(!D.river) return;
+    var gRiver=document.getElementById('g-river');
+    if(!gRiver) return;
+    var line=D.river.huangpu_line || D.river.huangpu;
+    if(!line || !line.length) return;
+    var dstr='';
+    line.forEach(function(pt,i){ var xy=project(pt[0],pt[1]); dstr+=(i===0?'M':'L')+xy[0].toFixed(1)+','+xy[1].toFixed(1); });
+    ['river-gap','river-body','river-core'].forEach(function(cls){
+      var p=document.createElementNS('http://www.w3.org/2000/svg','path');
+      p.setAttribute('d',dstr); p.setAttribute('class',cls);
+      gRiver.appendChild(p);
+    });
+  })();
+
   /* ---------- 3. 门店点（预建，隐藏） ---------- */
   var placed = { A:false, B:false };
   var storeNodes = { arabica:[], luckin:[] };

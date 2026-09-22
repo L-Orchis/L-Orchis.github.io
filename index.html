@@ -145,6 +145,11 @@
   .dist path.hi{fill:#F3E9D2}
   .dist-label{font-size:9px;fill:#9C8E71;font-family:"Noto Sans SC";pointer-events:none;text-anchor:middle;font-weight:500}
   .dist-label.suburb{fill:#9BA9AD}
+  /* 黄浦江：分割陆地效果——隔离层用页面背景色把两岸区界推开(切出水道)，再叠江体与江心 */
+  .river path{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+  .river path.river-gap{stroke:#F1EDE2;stroke-width:15}
+  .river path.river-body{stroke:#7FB8D6;stroke-width:9;opacity:.95}
+  .river path.river-core{stroke:#5AA0C8;stroke-width:5}
 
   .store-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s;vector-effect:non-scaling-stroke}
   .store-dot.show{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards}
@@ -488,6 +493,7 @@
           <svg id="map-svg" viewBox="0 0 760 720" preserveAspectRatio="xMidYMid meet">
             <g id="g-viewport">
               <g id="g-dist" class="dist"></g>
+              <g id="g-river" class="river"></g>
               <g id="g-metro" class="ref-metro"></g>
               <g id="g-cbd" class="ref-cbd"></g>
               <g id="g-factory" class="ref-factory"></g>
